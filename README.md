@@ -14,4 +14,3 @@ Leaflet desde unpkg; cartografía OpenStreetMap; WebLLM y modelo Qwen descargado
 
 ## GitHub
 Este ZIP no incluye credenciales, historial Git ni la configuración de identidad del alojamiento anterior. Descomprimir e importar en el repositorio elegido. Conservar dist/ y content/ para continuar el desarrollo. Revisar los derechos de documentos, referencias y logotipos antes de elegir una licencia pública.
-
