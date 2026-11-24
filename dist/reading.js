@@ -5,6 +5,6 @@ let cardWriters=[],cardSession=0;
 function stopCard(){cardSession++;cardWriters.forEach(w=>w.cancel());cardWriters=[]}
 window.stopCard=stopCard;
 function writeCard(node,text,speed=4){const w=typewriter(node,{speed});cardWriters.push(w);w.append(text);return w.finish()}
-window.animateCard=r=>{stopCard();writeCard(el('name'),r.name,2);writeCard(el('summary'),r.summary,3)};
+window.animateCard=r=>{stopCard();el('name').textContent=r.name;writeCard(el('summary'),r.summary,3)};
 window.showHistory=async()=>{const box=el('history');if(box.style.display==='block'){stopCard();box.style.display='none';return}if(!current)return;stopCard();el('name').textContent=current.name;el('summary').textContent=current.summary;box.replaceChildren();box.style.display='block';const r=current,session=cardSession;for(const text of r.paragraphs){if(cardSession!==session||current!==r||el('card').hidden||box.style.display!=='block')break;const p=document.createElement('p');box.append(p);await writeCard(p,text,12)}};
 const opacity=el('cardopacity');try{opacity.value=localStorage.getItem('atlas-card-opacity')||'94'}catch{}function applyOpacity(){document.documentElement.style.setProperty('--card-alpha',Number(opacity.value)/100);el('opacityvalue').value=opacity.value+'%';try{localStorage.setItem('atlas-card-opacity',opacity.value)}catch{}}opacity.oninput=applyOpacity;applyOpacity();
